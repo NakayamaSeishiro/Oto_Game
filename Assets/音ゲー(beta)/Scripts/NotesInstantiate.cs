@@ -40,54 +40,26 @@ public class NotesInstantiate : MonoBehaviour
         if (NotesTest)
         {
             if (Input.GetKeyDown(KeyCode.D))
-                InstantiateNotes(Lanes[0].LanePos);
+                InstantiateNotes(0);
 
             if (Input.GetKeyDown(KeyCode.F))
-                InstantiateNotes(Lanes[1].LanePos);
+                InstantiateNotes(1);
 
             if (Input.GetKeyDown(KeyCode.J))
-                InstantiateNotes(Lanes[2].LanePos);
+                InstantiateNotes(2);
 
             if (Input.GetKeyDown(KeyCode.K))
-                InstantiateNotes(Lanes[3].LanePos);
+                InstantiateNotes(3);
 
             if (Input.GetKeyDown(KeyCode.Space))
-                InstantiateNotes(Lanes[4].LanePos);
+                InstantiateNotes(4);
         }
     }
 
-    public void InstantiateNotes(float lane)
+    public void InstantiateNotes(int block)
     {
-        GameObject note = Instantiate(NotesPrefabs, new Vector3(lane, 6.5f, 0), Quaternion.Euler(-90.0f, 0f, 0f)) as GameObject;
+        GameObject note = Instantiate(NotesPrefabs, new Vector3(Lanes[block].LanePos, 6.5f, 0), Quaternion.Euler(-90.0f, 0f, 0f)) as GameObject;
         NotesMoving n = note.GetComponent<NotesMoving>();
         n.NotesSpeed(HiSpeed);
-    }
-
-    public void SignalReceiveed_0()
-    {
-        InstantiateNotes(Lanes[0].LanePos);
-    }
-
-
-    public void SignalReceiveed_1()
-    {
-        InstantiateNotes(Lanes[1].LanePos);
-    }
-
-
-    public void SignalReceiveed_2()
-    {
-        InstantiateNotes(Lanes[2].LanePos);
-    }
-
-
-    public void SignalReceiveed_3()
-    {
-        InstantiateNotes(Lanes[3].LanePos);
-    }
-
-    public void SignalReceiveed_4()
-    {
-        InstantiateNotes(Lanes[4].LanePos);
     }
 }

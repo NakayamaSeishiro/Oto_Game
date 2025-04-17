@@ -517,7 +517,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bab8eb1e0aa8aea49a6aeb0299689485, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentTime: 0
+  currentFlame: 0
   format: {fileID: 235032423}
+  notesInstantiate: {fileID: 75669649}
   BeatmapName: 
   maxBlock: 0
   BPM: 0
@@ -525,8 +528,9 @@ MonoBehaviour:
   LPB: 0
   scoreNum: 
   scoreBlock: 
-  currentTime: 0
-  time: 0
+  NextNotesTime: 0
+  BeatmapLoaded: 0
+  notesInfo: []
 --- !u!4 &697753708
 Transform:
   m_ObjectHideFlags: 0
