@@ -1,0 +1,85 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\user\\Documents\\Unity Projects\\Musics(Beta)\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9B4D606C-7E29-0FAA-B67E-D2C86731985A}|Assembly-CSharp.csproj|c:\\users\\user\\documents\\unity projects\\musics(beta)\\assets\\\u97F3\u30B2\u30FC(beta)\\scripts\\loadbeatmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B4D606C-7E29-0FAA-B67E-D2C86731985A}|Assembly-CSharp.csproj|solutionrelative:assets\\\u97F3\u30B2\u30FC(beta)\\scripts\\loadbeatmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B4D606C-7E29-0FAA-B67E-D2C86731985A}|Assembly-CSharp.csproj|C:\\Users\\user\\Documents\\Unity Projects\\Musics(Beta)\\assets\\\u97F3\u30B2\u30FC(beta)\\scripts\\notesformat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B4D606C-7E29-0FAA-B67E-D2C86731985A}|Assembly-CSharp.csproj|solutionrelative:assets\\\u97F3\u30B2\u30FC(beta)\\scripts\\notesformat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B4D606C-7E29-0FAA-B67E-D2C86731985A}|Assembly-CSharp.csproj|C:\\Users\\user\\Documents\\Unity Projects\\Musics(Beta)\\assets\\\u97F3\u30B2\u30FC(beta)\\scripts\\notesinstantiate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B4D606C-7E29-0FAA-B67E-D2C86731985A}|Assembly-CSharp.csproj|solutionrelative:assets\\\u97F3\u30B2\u30FC(beta)\\scripts\\notesinstantiate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B4D606C-7E29-0FAA-B67E-D2C86731985A}|Assembly-CSharp.csproj|C:\\Users\\user\\Documents\\Unity Projects\\Musics(Beta)\\assets\\\u97F3\u30B2\u30FC(beta)\\scripts\\notesmoving.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B4D606C-7E29-0FAA-B67E-D2C86731985A}|Assembly-CSharp.csproj|solutionrelative:assets\\\u97F3\u30B2\u30FC(beta)\\scripts\\notesmoving.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LoadBeatmap.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\Unity Projects\\Musics(Beta)\\Assets\\\u97F3\u30B2\u30FC(beta)\\Scripts\\LoadBeatmap.cs",
+              "RelativeDocumentMoniker": "Assets\\\u97F3\u30B2\u30FC(beta)\\Scripts\\LoadBeatmap.cs",
+              "ToolTip": "C:\\Users\\user\\Documents\\Unity Projects\\Musics(Beta)\\Assets\\\u97F3\u30B2\u30FC(beta)\\Scripts\\LoadBeatmap.cs",
+              "RelativeToolTip": "Assets\\\u97F3\u30B2\u30FC(beta)\\Scripts\\LoadBeatmap.cs",
+              "ViewState": "AQIAAF0AAAAAAAAAAAAAAHcAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-17T02:34:31.476Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "NotesMoving.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\Unity Projects\\Musics(Beta)\\Assets\\\u97F3\u30B2\u30FC(beta)\\Scripts\\NotesMoving.cs",
+              "RelativeDocumentMoniker": "Assets\\\u97F3\u30B2\u30FC(beta)\\Scripts\\NotesMoving.cs",
+              "ToolTip": "C:\\Users\\user\\Documents\\Unity Projects\\Musics(Beta)\\Assets\\\u97F3\u30B2\u30FC(beta)\\Scripts\\NotesMoving.cs",
+              "RelativeToolTip": "Assets\\\u97F3\u30B2\u30FC(beta)\\Scripts\\NotesMoving.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABIAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-17T01:10:38.967Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "NotesInstantiate.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\Unity Projects\\Musics(Beta)\\Assets\\\u97F3\u30B2\u30FC(beta)\\Scripts\\NotesInstantiate.cs",
+              "RelativeDocumentMoniker": "Assets\\\u97F3\u30B2\u30FC(beta)\\Scripts\\NotesInstantiate.cs",
+              "ToolTip": "C:\\Users\\user\\Documents\\Unity Projects\\Musics(Beta)\\Assets\\\u97F3\u30B2\u30FC(beta)\\Scripts\\NotesInstantiate.cs",
+              "RelativeToolTip": "Assets\\\u97F3\u30B2\u30FC(beta)\\Scripts\\NotesInstantiate.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAADoAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-17T00:56:37.957Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "NotesFormat.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\Unity Projects\\Musics(Beta)\\Assets\\\u97F3\u30B2\u30FC(beta)\\Scripts\\NotesFormat.cs",
+              "RelativeDocumentMoniker": "Assets\\\u97F3\u30B2\u30FC(beta)\\Scripts\\NotesFormat.cs",
+              "ToolTip": "C:\\Users\\user\\Documents\\Unity Projects\\Musics(Beta)\\Assets\\\u97F3\u30B2\u30FC(beta)\\Scripts\\NotesFormat.cs",
+              "RelativeToolTip": "Assets\\\u97F3\u30B2\u30FC(beta)\\Scripts\\NotesFormat.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAACsAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T02:20:51.425Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
