@@ -154,18 +154,20 @@ MonoBehaviour:
   NotesPrefabs: {fileID: 1829836056049453927, guid: 4954552749bf9cc4f91da24b6385dbc0,
     type: 3}
   NotesTest: 0
-  HiSpeed: 1
+  HiSpeed: 3
+  notes_StartPos: {x: 0, y: 10, z: 10}
+  notes_vec: {x: 0, y: -1, z: -1}
   Lanes:
   - LaneNo: 1
-    LanePos: -3.3
+    LanePos: -5
   - LaneNo: 2
-    LanePos: -1.1
+    LanePos: -2.5
   - LaneNo: 3
-    LanePos: 1.1
+    LanePos: 0
   - LaneNo: 4
-    LanePos: 3.3
+    LanePos: 2.5
   - LaneNo: 5
-    LanePos: 5.5
+    LanePos: 5
 --- !u!4 &75669650
 Transform:
   m_ObjectHideFlags: 0
@@ -269,7 +271,7 @@ Camera:
   m_GameObject: {fileID: 330585543}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 1, g: 1, b: 1, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -319,13 +321,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
+  m_LocalPosition: {x: 0, y: 2, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -530,6 +532,8 @@ MonoBehaviour:
   scoreBlock: 
   NextNotesTime: 0
   BeatmapLoaded: 0
+  BeatmapStart: 0
+  Notes_No: 0
   notesInfo: []
 --- !u!4 &697753708
 Transform:
@@ -602,6 +606,6 @@ SceneRoots:
   - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 832575519}
-  - {fileID: 235032424}
   - {fileID: 75669650}
+  - {fileID: 235032424}
   - {fileID: 697753708}

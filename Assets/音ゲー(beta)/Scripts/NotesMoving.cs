@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class NotesMoving : MonoBehaviour
 {
-    [SerializeField] float NotesSpeedRatio = 1f;
+    float NotesSpeedRatio = 1f;
+
+    Vector3 notes_route = Vector3.zero;
 
     // Start is called before the first frame update
     void Start()
@@ -15,18 +17,22 @@ public class NotesMoving : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(0f, 0f, -0.1f * NotesSpeedRatio);
+        Vector3 notes_vec = notes_route * NotesSpeedRatio;
+        transform.Translate(notes_vec.x, notes_vec.y, notes_vec.z);
         NotesDestroy();
     }
 
-    public void NotesSpeed(float speed)
+    public void NotesTransform(float speed, Vector3 pos)
     {
-        NotesSpeedRatio = speed;
+        NotesSpeedRatio = speed / 10;
+        notes_route = pos;
     }
 
     void NotesDestroy()
     {
-        if(this.transform.position.y <= -7.0f)
+        if((Mathf.Abs(this.transform.position.x) >= 10.0f) ||
+                (Mathf.Abs(this.transform.position.y) >= 10.0f) ||
+                    (Mathf.Abs(this.transform.position.z) >= 10.0f))
         {
             Destroy(this.gameObject);
         }

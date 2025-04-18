@@ -8,7 +8,11 @@ public class NotesInstantiate : MonoBehaviour
 
     [SerializeField] bool NotesTest = false;
 
-    [SerializeField , Range(1f, 15f)] float HiSpeed = 1f;
+    [SerializeField , Range(1f, 15f)] float HiSpeed = 3f;
+
+    [SerializeField] Vector3 notes_StartPos;
+
+    [SerializeField] Vector3 notes_vec = Vector3.zero;
 
     [SerializeField]
     LaneInfo[] Lanes;
@@ -58,8 +62,8 @@ public class NotesInstantiate : MonoBehaviour
 
     public void InstantiateNotes(int block)
     {
-        GameObject note = Instantiate(NotesPrefabs, new Vector3(Lanes[block].LanePos, 6.5f, 0), Quaternion.Euler(-90.0f, 0f, 0f)) as GameObject;
+        GameObject note = Instantiate(NotesPrefabs, new Vector3(Lanes[block].LanePos, notes_StartPos.y, notes_StartPos.z), Quaternion.identity) as GameObject;
         NotesMoving n = note.GetComponent<NotesMoving>();
-        n.NotesSpeed(HiSpeed);
+        n.NotesTransform(HiSpeed, notes_vec);
     }
 }
