@@ -8,6 +8,8 @@ public class NotesMoving : MonoBehaviour
 
     Vector3 notes_route = Vector3.zero;
 
+    public float _LIMIT = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,9 +32,9 @@ public class NotesMoving : MonoBehaviour
 
     void NotesDestroy()
     {
-        if((Mathf.Abs(this.transform.position.x) >= 10.0f) ||
-                (Mathf.Abs(this.transform.position.y) >= 10.0f) ||
-                    (Mathf.Abs(this.transform.position.z) >= 10.0f))
+        if((Mathf.Abs(this.transform.position.x) >= _LIMIT) ||
+                (Mathf.Abs(this.transform.position.y) >= _LIMIT) ||
+                    (Mathf.Abs(this.transform.position.z) >= _LIMIT))
         {
             Destroy(this.gameObject);
         }

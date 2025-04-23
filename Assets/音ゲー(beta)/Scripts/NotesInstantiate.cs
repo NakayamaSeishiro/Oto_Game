@@ -14,6 +14,8 @@ public class NotesInstantiate : MonoBehaviour
 
     [SerializeField] Vector3 notes_vec = Vector3.zero;
 
+    [SerializeField] float notes_Limit = 0.0f;
+
     [SerializeField]
     LaneInfo[] Lanes;
 
@@ -27,7 +29,7 @@ public class NotesInstantiate : MonoBehaviour
 
     void Awake()
     {
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = 120;
     }
 
     void Start()
@@ -65,5 +67,6 @@ public class NotesInstantiate : MonoBehaviour
         GameObject note = Instantiate(NotesPrefabs, new Vector3(Lanes[block].LanePos, notes_StartPos.y, notes_StartPos.z), Quaternion.identity) as GameObject;
         NotesMoving n = note.GetComponent<NotesMoving>();
         n.NotesTransform(HiSpeed, notes_vec);
+        n._LIMIT = notes_Limit;
     }
 }
