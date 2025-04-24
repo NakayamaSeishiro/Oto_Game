@@ -16,13 +16,15 @@ public class NotesFormat : MonoBehaviour
 
     private void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.R))
         {
             Format();
         }
+        */
     }
 
-    private void Format()
+    public void Format()
     {
         string JsonPass = "Json/" + JsonName;
         string textAsset = Resources.Load<TextAsset>(JsonPass).ToString();

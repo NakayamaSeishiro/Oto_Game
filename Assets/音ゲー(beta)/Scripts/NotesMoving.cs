@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static LoadBeatmap;
 
 public class NotesMoving : MonoBehaviour
 {
-    float NotesSpeedRatio = 1f;
+    public float HiSpeed = 1.0f;
 
-    Vector3 notes_route = Vector3.zero;
-
-    public float _LIMIT = 0.0f;
+    private bool BeatmapStart = false;
 
     // Start is called before the first frame update
     void Start()
@@ -16,25 +15,35 @@ public class NotesMoving : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        Vector3 notes_vec = notes_route * NotesSpeedRatio;
-        transform.Translate(notes_vec.x, notes_vec.y, notes_vec.z);
-        NotesDestroy();
+        if (Input.GetKey(KeyCode.S))
+        {
+            BeatmapStart = true;
+        }
     }
 
-    public void NotesTransform(float speed, Vector3 pos)
+    // Update is called once per frame
+    void FixedUpdate()
     {
-        NotesSpeedRatio = speed / 10;
-        notes_route = pos;
+        if (BeatmapStart)
+        {
+            transform.Translate(0, -HiSpeed * Time.deltaTime, -HiSpeed * Time.deltaTime);
+
+            //Debug.Log(-HiSpeed * Time.deltaTime);
+        }
+
+        NotesDestroy();
     }
 
     void NotesDestroy()
     {
-        if((Mathf.Abs(this.transform.position.x) >= _LIMIT) ||
-                (Mathf.Abs(this.transform.position.y) >= _LIMIT) ||
-                    (Mathf.Abs(this.transform.position.z) >= _LIMIT))
+        if((this.transform.position.y <= -13) || (this.transform.position.z <= -13))
+        {
+            Destroy(this.gameObject);
+        }
+
+        if (Input.GetKey(KeyCode.R))
         {
             Destroy(this.gameObject);
         }

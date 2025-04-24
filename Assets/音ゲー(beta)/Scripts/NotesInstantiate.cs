@@ -8,13 +8,9 @@ public class NotesInstantiate : MonoBehaviour
 
     [SerializeField] bool NotesTest = false;
 
-    [SerializeField , Range(1f, 15f)] float HiSpeed = 3f;
+    [Range(1f, 100f)] public float HiSpeed = 1.0f;
 
     [SerializeField] Vector3 notes_StartPos;
-
-    [SerializeField] Vector3 notes_vec = Vector3.zero;
-
-    [SerializeField] float notes_Limit = 0.0f;
 
     [SerializeField]
     LaneInfo[] Lanes;
@@ -42,6 +38,7 @@ public class NotesInstantiate : MonoBehaviour
 
     void Update()
     {
+        /*
         //ê∂ê¨ÉeÉXÉg
         if (NotesTest)
         {
@@ -60,13 +57,18 @@ public class NotesInstantiate : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
                 InstantiateNotes(4);
         }
+        */
     }
 
-    public void InstantiateNotes(int block)
+    public void InstantiateNotes(int BPM, int LPB, int Num, int block)
     {
-        GameObject note = Instantiate(NotesPrefabs, new Vector3(Lanes[block].LanePos, notes_StartPos.y, notes_StartPos.z), Quaternion.identity) as GameObject;
+
+        Debug.Log(BPM);
+
+        float InstancePos = Time.deltaTime * ( 60.0f / (float)BPM * (float)Num * 120.0f ) * (float)LPB * (float)HiSpeed
+                               /* + 120.0f / (float)BPM * 2.0f * HiSpeed */ - 8.5f;
+        GameObject note = Instantiate(NotesPrefabs, new Vector3(Lanes[block].LanePos, InstancePos, InstancePos), Quaternion.identity) as GameObject;
         NotesMoving n = note.GetComponent<NotesMoving>();
-        n.NotesTransform(HiSpeed, notes_vec);
-        n._LIMIT = notes_Limit;
+        n.HiSpeed = HiSpeed;
     }
 }
