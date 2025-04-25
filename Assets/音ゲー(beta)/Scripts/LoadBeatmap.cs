@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using static LoadBeatmap;
 
@@ -10,6 +13,7 @@ public class LoadBeatmap : MonoBehaviour
 
     [SerializeField] NotesFormat format;
     [SerializeField] NotesInstantiate notesInstantiate;
+    [SerializeField] AudioSource Music;
 
     public string BeatmapName;
     public int maxBlock;
@@ -47,46 +51,62 @@ public class LoadBeatmap : MonoBehaviour
     void Start()
     {
         Reset();
+
+        format = GetComponent<NotesFormat>();
     }
 
     void FixedUpdate()
     {
         currentTime += Time.deltaTime;
         currentFlame++;
-
-        
-        NotesInsutantiate(notesInfo);
     }
 
     // Update is called once per frame
-    void Update()
+    async Task Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha0))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             Reset();
+
+            Music.Stop();
+
             notesInfo = new NotesInfo[0];
         }
 
         if (Input.GetKeyDown(KeyCode.L))
         {
+            Reset();
+
+            format.Format();
+
             LoadNotesFormat();
 
             NotesDataImport();
+
+            NotesInstantiate(notesInfo);
+
         }
 
         if (Input.GetKeyDown(KeyCode.T))
         {
+            Reset();
+
             LoadLoadNotesFormat_test();
 
             NotesDataImport();
+
+            NotesInstantiate(notesInfo);
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKey(KeyCode.S))
         {
-            Reset();
-            BeatmapStart = true;
-        }
+  
+            //float _waitTime = ;
 
+            //await UniTask.Delay(TimeSpan.FromSeconds(_waitTime));
+            //await UniTask.Delay(offset + 300); 
+            Music.Play();
+        }
     }
 
     void LoadNotesFormat()
@@ -107,15 +127,15 @@ public class LoadBeatmap : MonoBehaviour
         //テストデータJson読み込み
 
         BeatmapName = "test";
-        maxBlock = 5;
+        maxBlock = 4;
         BPM = 120;
         offset = 0;
         LPB = 4;
         
-        scoreNum = new int[5];
-        scoreBlock = new int[5];
+        scoreNum = new int[4];
+        scoreBlock = new int[4];
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 4; i++)
         {
             scoreNum[i] = i + 1;
             scoreBlock[i] = i;
@@ -132,40 +152,17 @@ public class LoadBeatmap : MonoBehaviour
             notesInfo[i] = new NotesInfo(scoreNum[i], scoreBlock[i]);
         }
 
-        NextNotesTime = 60 / (float)BPM / (float)LPB * 4 * (float)notesInfo[0].Num;
-
-        Reset();
-
         BeatmapLoaded = true;
     }
 
-    void NotesInsutantiate(NotesInfo[] notesInfo)
+    void NotesInstantiate(NotesInfo[] notesInfo)
     {
-        if (!BeatmapStart)
+        for (int i = 0; i < notesInfo.Length; i++)
         {
-            //Debug.Log($"Don't Beatmap Loaded!");
-            return;
+            notesInstantiate.InstantiateNotes(BPM, LPB, scoreNum[i], scoreBlock[i]);
         }
 
-        if (currentTime >= NextNotesTime)
-        {
-            notesInstantiate.InstantiateNotes(notesInfo[Notes_No].Block);
-
-            Debug.Log($"Notes_No : {Notes_No}");
-
-            Notes_No++;
-
-            if (Notes_No >= notesInfo.Length)
-            {
-                BeatmapStart = false;
-                return;
-            }
-
-            NextNotesTime = ( 60 / (float)BPM / (float)LPB * 4 * (float)notesInfo[Notes_No].Num ) - 
-                ( 60 / (float)BPM / (float)LPB * 4 * (float)notesInfo[Notes_No - 1].Num );
-
-            currentTime = 0f;
-        }
+        Debug.Log("Load Successed");
     }
 
     void Reset()
