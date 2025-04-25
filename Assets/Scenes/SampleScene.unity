@@ -153,7 +153,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NotesPrefabs: {fileID: 1829836056049453927, guid: 4954552749bf9cc4f91da24b6385dbc0,
     type: 3}
-  NotesTest: 0
   HiSpeed: 1
   notes_StartPos: {x: 0, y: 20, z: 20}
   Lanes:
@@ -823,13 +822,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8a5d7299f6d2d3145a9cab55e225f2f3, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 101
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -916,7 +915,7 @@ Transform:
   m_GameObject: {fileID: 441981338}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.110126644, y: 3.1763723, z: -6.3610573}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -952,11 +951,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bab8eb1e0aa8aea49a6aeb0299689485, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _musicTime: 0
   currentTime: 0
   currentFlame: 0
   format: {fileID: 697753709}
   notesInstantiate: {fileID: 75669649}
+  judge: {fileID: 895055996}
   Music: {fileID: 441981339}
+  BeatmapStart: 0
   BeatmapName: 
   maxBlock: 0
   BPM: 0
@@ -964,10 +966,6 @@ MonoBehaviour:
   LPB: 0
   scoreNum: 
   scoreBlock: 
-  NextNotesTime: 0
-  BeatmapLoaded: 0
-  BeatmapStart: 0
-  Notes_No: 0
   notesInfo: []
 --- !u!4 &697753708
 Transform:
@@ -978,7 +976,7 @@ Transform:
   m_GameObject: {fileID: 697753706}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -996,7 +994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 783ac13d1e8d71c44899c841d601d1d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JsonName: snooze
+  JsonName: snooze   wotaku feat. SHIKI
   _NAME: 
   _MAXBLOCK: 0
   _BPM: 0
@@ -1110,6 +1108,52 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 750638269}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &895055994
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 895055995}
+  - component: {fileID: 895055996}
+  m_Layer: 0
+  m_Name: NotesJudgement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &895055995
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895055994}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &895055996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895055994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04de03950c310a24487746908063717d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  liveNotes: []
+  Notes_Length: 0
 --- !u!1 &1306242689
 GameObject:
   m_ObjectHideFlags: 0
@@ -1663,5 +1707,6 @@ SceneRoots:
   - {fileID: 145411918}
   - {fileID: 75669650}
   - {fileID: 697753708}
+  - {fileID: 895055995}
   - {fileID: 441981340}
   - {fileID: 227951548}

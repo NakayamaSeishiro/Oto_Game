@@ -8,12 +8,18 @@ using static LoadBeatmap;
 
 public class LoadBeatmap : MonoBehaviour
 {
+
+    [SerializeField] float _musicTime = 0f;
+
     [SerializeField] float currentTime = 0f;
     [SerializeField] int currentFlame = 0;
 
     [SerializeField] NotesFormat format;
     [SerializeField] NotesInstantiate notesInstantiate;
+    [SerializeField] NotesJudgement judge;
     [SerializeField] AudioSource Music;
+
+    [SerializeField] bool BeatmapStart = false;
 
     public string BeatmapName;
     public int maxBlock;
@@ -22,14 +28,6 @@ public class LoadBeatmap : MonoBehaviour
     public int LPB;
     public int[] scoreNum;
     public int[] scoreBlock;
-
-    [SerializeField] float NextNotesTime = 0f;
-
-    [SerializeField] bool BeatmapLoaded = false;
-
-    [SerializeField] bool BeatmapStart = false;
-
-    [SerializeField] int Notes_No = 0;
 
     public NotesInfo[] notesInfo = new NotesInfo[0];
 
@@ -59,6 +57,8 @@ public class LoadBeatmap : MonoBehaviour
     {
         currentTime += Time.deltaTime;
         currentFlame++;
+
+        _musicTime = Music.time;
     }
 
     // Update is called once per frame
@@ -100,11 +100,6 @@ public class LoadBeatmap : MonoBehaviour
 
         if (Input.GetKey(KeyCode.S))
         {
-  
-            //float _waitTime = ;
-
-            //await UniTask.Delay(TimeSpan.FromSeconds(_waitTime));
-            //await UniTask.Delay(offset + 300); 
             Music.Play();
         }
     }
@@ -145,21 +140,20 @@ public class LoadBeatmap : MonoBehaviour
 
     void NotesDataImport()
     {
-        notesInfo = new NotesInfo[scoreNum.Length];
+      
+        judge.liveNotes = new NotesJudgement.LiveNotes[scoreNum.Length];
 
         for (int i = 0; i < notesInfo.Length; i++)
         {
             notesInfo[i] = new NotesInfo(scoreNum[i], scoreBlock[i]);
         }
-
-        BeatmapLoaded = true;
     }
 
     void NotesInstantiate(NotesInfo[] notesInfo)
     {
         for (int i = 0; i < notesInfo.Length; i++)
         {
-            notesInstantiate.InstantiateNotes(BPM, LPB, scoreNum[i], scoreBlock[i]);
+            notesInstantiate.InstantiateNotes(BPM, LPB, offset, scoreNum[i], scoreBlock[i]);
         }
 
         Debug.Log("Load Successed");
@@ -169,6 +163,5 @@ public class LoadBeatmap : MonoBehaviour
     {
         currentTime = 0f;
         currentFlame = 0;
-        Notes_No = 0;
     }
 }
