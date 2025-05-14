@@ -153,7 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NotesPrefabs: {fileID: 1829836056049453927, guid: 4954552749bf9cc4f91da24b6385dbc0,
     type: 3}
-  HiSpeed: 1
+  HiSpeed: 50
   notes_StartPos: {x: 0, y: 20, z: 20}
   Lanes:
   - LaneNo: 1
@@ -953,7 +953,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _musicTime: 0
   currentTime: 0
-  currentFlame: 0
   format: {fileID: 697753709}
   notesInstantiate: {fileID: 75669649}
   judge: {fileID: 895055996}
@@ -1152,8 +1151,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04de03950c310a24487746908063717d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadBeatmap: {fileID: 697753707}
+  NEXT_NOTES: 0
+  NEXT_TIME: 0
   liveNotes: []
-  Notes_Length: 0
+  _num: 
+  _time: []
+  _keys: 
+  InfoLoaded: 0
 --- !u!1 &1306242689
 GameObject:
   m_ObjectHideFlags: 0

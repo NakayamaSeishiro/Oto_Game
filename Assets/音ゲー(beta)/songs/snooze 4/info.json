@@ -1,0 +1,9 @@
+{ 
+    "Name": "Snooze", 
+    "Artist": "wotaku feat.SHIKI",
+    "Difficult": "0",
+    
+    "jsonPath": "snooze.json",
+    "Jacket": "jacket.png",
+    "Song": "snooze_wotaku feat. SHIKI.wav"
+}

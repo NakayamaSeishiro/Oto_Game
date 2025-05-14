@@ -45,7 +45,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6930507192d71c747942c549005db83c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _LIMIT: 0
+  HiSpeed: 1
+  NotesNumber: 0
+  judgement: {fileID: 0}
+  judged: 0
+  _perfect: {fileID: 6534270037398567830, guid: eca9ddcee7f3aa84d8c13311c76a428f,
+    type: 3}
+  _great: {fileID: 6534270037398567830, guid: 89cf380ec0f9ccd4d99733e9e4f87a5f, type: 3}
+  _bad: {fileID: 6534270037398567830, guid: f8f6c257710b73540a03bf4dc04124af, type: 3}
+  _miss: {fileID: 6534270037398567830, guid: 88cb97c1e62f3b84db966425bc646dea, type: 3}
 --- !u!1 &8717818969523839508
 GameObject:
   m_ObjectHideFlags: 0

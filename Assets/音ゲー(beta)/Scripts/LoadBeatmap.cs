@@ -4,22 +4,23 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using static LoadBeatmap;
+using UnityEngine.SceneManagement;
 
 public class LoadBeatmap : MonoBehaviour
 {
 
     [SerializeField] float _musicTime = 0f;
 
-    [SerializeField] float currentTime = 0f;
-    [SerializeField] int currentFlame = 0;
+    public float currentTime = 0f;
+
+    public float PlayOffset = 0f;
 
     [SerializeField] NotesFormat format;
     [SerializeField] NotesInstantiate notesInstantiate;
     [SerializeField] NotesJudgement judge;
     [SerializeField] AudioSource Music;
 
-    [SerializeField] bool BeatmapStart = false;
+    public bool BeatmapStart = false;
 
     public string BeatmapName;
     public int maxBlock;
@@ -37,12 +38,6 @@ public class LoadBeatmap : MonoBehaviour
         public int Num;
 
         public int Block;
-
-        public NotesInfo(int Num,int Block)
-        {
-            this.Num = Num;
-            this.Block = Block;
-        }
     }
 
     // Start is called before the first frame update
@@ -55,18 +50,25 @@ public class LoadBeatmap : MonoBehaviour
 
     void FixedUpdate()
     {
-        currentTime += Time.deltaTime;
-        currentFlame++;
+        if (BeatmapStart)
+        {
+            currentTime += Time.deltaTime;
 
-        _musicTime = Music.time;
+            _musicTime = Music.time;
+        }
     }
 
     // Update is called once per frame
     async Task Update()
     {
+
         if (Input.GetKeyDown(KeyCode.R))
         {
+            BeatmapStart = false;
+
             Reset();
+
+            StopCoroutine(MusicPlay());
 
             Music.Stop();
 
@@ -75,8 +77,6 @@ public class LoadBeatmap : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.L))
         {
-            Reset();
-
             format.Format();
 
             LoadNotesFormat();
@@ -89,8 +89,6 @@ public class LoadBeatmap : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.T))
         {
-            Reset();
-
             LoadLoadNotesFormat_test();
 
             NotesDataImport();
@@ -100,7 +98,8 @@ public class LoadBeatmap : MonoBehaviour
 
         if (Input.GetKey(KeyCode.S))
         {
-            Music.Play();
+            BeatmapStart = true;
+            StartCoroutine(MusicPlay());
         }
     }
 
@@ -140,21 +139,29 @@ public class LoadBeatmap : MonoBehaviour
 
     void NotesDataImport()
     {
-      
-        judge.liveNotes = new NotesJudgement.LiveNotes[scoreNum.Length];
+        notesInfo = new NotesInfo[scoreNum.Length];
 
-        for (int i = 0; i < notesInfo.Length; i++)
-        {
-            notesInfo[i] = new NotesInfo(scoreNum[i], scoreBlock[i]);
-        }
+        judge._num = new int[scoreNum.Length];
+        judge._time = new float[scoreNum.Length];
+        judge._keys = new int[scoreNum.Length];
     }
 
     void NotesInstantiate(NotesInfo[] notesInfo)
     {
         for (int i = 0; i < notesInfo.Length; i++)
         {
-            notesInstantiate.InstantiateNotes(BPM, LPB, offset, scoreNum[i], scoreBlock[i]);
+            notesInstantiate.InstantiateNotes(BPM, LPB, offset, scoreNum[i], scoreBlock[i], i);
+
+            judge._num[i] = i;
+            judge._time[i] = /* 各ノーツの判定時間 */ 　     60.0f / (float)BPM / (float)LPB * (float)scoreNum[i]
+                             /* 曲のオフセット */          + (float)offset / 44100.0f
+                             /* プレイヤーのオフセット*/   + PlayOffset
+                             /* 1s遅延 */                  + 1.0f
+                             /* 微調整 */                  - 0.01f;
+            judge._keys[i] = scoreBlock[i];
         }
+
+        judge.InfoLoaded = true;
 
         Debug.Log("Load Successed");
     }
@@ -162,6 +169,14 @@ public class LoadBeatmap : MonoBehaviour
     void Reset()
     {
         currentTime = 0f;
-        currentFlame = 0;
+
+        _musicTime = 0f;
+    }
+
+    private IEnumerator MusicPlay()
+    {
+        yield return new WaitForSeconds(1.0f);
+
+        Music.Play();
     }
 }
