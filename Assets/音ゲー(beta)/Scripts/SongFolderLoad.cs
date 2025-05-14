@@ -70,7 +70,7 @@ public class SongFolderLoad : MonoBehaviour
             Songs[Songs.Length - 1] = new JsonData(json.Name, json.Artist, json.Difficult, json.jsonPath, json.Jacket, json.Song);
 
             GameObject songObj = Instantiate(songPreset);
-            songObj.transform.position = new Vector3(1000 * (Songs.Length - 1), -200, 0);
+            songObj.transform.position = new Vector3(900 * (Songs.Length - 1), -200, 0);
 
             songObj.transform.SetParent(canvas.transform, false);
 
