@@ -39,6 +39,7 @@ public class NotesMoving : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        // Å´å„Ç≈InputSystemÇ…íºÇ∑
         if (Input.GetKey(KeyCode.S))
         {
             BeatmapStart = true;

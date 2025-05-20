@@ -61,6 +61,7 @@ public class LoadBeatmap : MonoBehaviour
     // Update is called once per frame
     async Task Update()
     {
+        // «Œã‚ÅInputSystem‚É’¼‚·
 
         if (Input.GetKeyDown(KeyCode.R))
         {

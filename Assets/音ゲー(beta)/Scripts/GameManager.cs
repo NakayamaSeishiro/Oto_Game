@@ -1,74 +1,133 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public enum GameState
 {
-    public NotesFormat notesFormat;
-    public LoadBeatmap loadBeatmap;
-    public NotesInstantiate notesInstantiate;
-    public NotesJudgement notesJudgement;
-    public NotesMoving notesMoving;
-    public UIManager uiManager;
+    None,
+    Title,
+    Select,
+    Playing,
+    Result,
+    End
+}
 
-    [Range(1f, 100f)] public float HiSpeed = 30.0f;
+public class GameManager : SingletonMonoBehaviour<GameManager>
+{
+    public static GameManager Instance;
 
-    [Range(-10.0f, 10f)] public float PlayOffset = 0.0f;
+    // 現在の状態
+    [SerializeField] private GameState currentGameState;
 
-    // Start is called before the first frame update
-    void OnEnable()
+    //[Header("必要なコンポーネントを登録")]
+
+    void Awake()
     {
-        notesFormat = GetComponentInChildren<NotesFormat>();
-        loadBeatmap = GetComponentInChildren<LoadBeatmap>();
-        notesInstantiate = GetComponentInChildren<NotesInstantiate>();
-        notesJudgement = GetComponentInChildren<NotesJudgement>();
-        uiManager = GetComponent<UIManager>();
+        if (this != Instance)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject);
+        Instance = this;
+        SetCurrentState(GameState.None);
+        OnAwakeCurrentState();
+
+    }
+    // 外からこのメソッドを使って状態を変更
+    public void SetCurrentState(GameState state)
+    {
+        currentGameState = state;
+        OnGameStateChanged(currentGameState);
     }
 
-    void Start()
+    // 起動時のシーンに合わせて状態を初期化
+    public void OnAwakeCurrentState()
     {
-        notesInstantiate.HiSpeed = HiSpeed;
-        notesInstantiate.PlayOffset = PlayOffset;
-        loadBeatmap.PlayOffset = PlayOffset;
+        var currentScene = SceneManager.GetActiveScene().name;
+        switch (currentScene)
+        {
+            case "Title":
+                SetCurrentState(GameState.Title);
+                break;
 
-        uiManager.TextUpdate_Speed(HiSpeed);
-        uiManager.TextUpdate_Offset(PlayOffset);
+            case "Select":
+                SetCurrentState(GameState.Select);
+                break;
+
+            case "Playing":
+                SetCurrentState(GameState.Playing);
+                break;
+
+            case "Result":
+                SetCurrentState(GameState.Result);
+                break;
+
+            case "End":
+                SetCurrentState(GameState.End);
+                break;
+
+            default:
+                break;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    // 状態が変わったら何をするか
+    void OnGameStateChanged(GameState state)
     {
-        if (Input.GetKeyDown(KeyCode.Keypad7))
+        switch (state)
         {
-            HiSpeed += 10.0f;
-            uiManager.TextUpdate_Speed(HiSpeed);
-        }
+            case GameState.Title:
+                Title();
+                break;
 
-        if (Input.GetKeyDown(KeyCode.Keypad1))
-        {
-            HiSpeed -= 10.0f;
-            uiManager.TextUpdate_Speed(HiSpeed);
-        }
+            case GameState.Select:
+                Select();
+                break;
 
-        if (Input.GetKeyDown(KeyCode.Keypad9))
-        {
-            PlayOffset += 0.05f;
-            uiManager.TextUpdate_Offset(PlayOffset);
-        }
+            case GameState.Playing:
+                Playing();
+                break;
 
-        if (Input.GetKeyDown(KeyCode.Keypad3))
-        {
-            PlayOffset -= 0.05f;
-            uiManager.TextUpdate_Offset(PlayOffset);
-        }
+            case GameState.Result:
+                Result();
+                break;
 
-        if ( HiSpeed == notesInstantiate.HiSpeed||
-            PlayOffset == notesInstantiate.PlayOffset||
-            PlayOffset ==loadBeatmap.PlayOffset)
-        {
-            notesInstantiate.HiSpeed = HiSpeed;
-            notesInstantiate.PlayOffset = PlayOffset;
-            loadBeatmap.PlayOffset = PlayOffset;
+            case GameState.End:
+                End();
+                break;
+
+            default:
+                break;
         }
+    }
+
+    // Titleシーン
+    void Title()
+    {
+    }
+
+    // Selectシーン
+    void Select()
+    {
+
+    }
+    // Playingシーン
+    void Playing()
+    {
+
+    }
+    // Resultシーン
+    void Result()
+    {
+
+    }
+    // Endシーン
+    void End()
+    {
+
     }
 }

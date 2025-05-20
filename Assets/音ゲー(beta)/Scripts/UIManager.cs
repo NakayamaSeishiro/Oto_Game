@@ -15,13 +15,9 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI _hispeedText;
     public TextMeshProUGUI _offsetText;
 
-    GameManager gameManager;
-
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-
         color = image.GetComponent<Image>().color;
         color.r = 0.0f;
         color.g = 0.0f;
